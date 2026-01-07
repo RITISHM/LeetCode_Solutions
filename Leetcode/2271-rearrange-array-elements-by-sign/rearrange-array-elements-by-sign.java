@@ -1,17 +1,17 @@
 class Solution {
     public int[] rearrangeArray(int[] nums) {
-        int []positive=new int [nums.length/2];
-        int []negative=new int [nums.length/2];
-        int p=0,n=0;
-        for (int i:nums){
-            if (i<0)negative[n++]=i;
-            else positive [p++]=i;
+        int []ans=new int [nums.length];
+        int p=0,n=1;
+        for(int i:nums){
+            if (i>=0){
+                ans[p]=i;
+                p+=2;
+            }
+            else {
+                ans[n]=i;
+                n+=2;
+            }
         }
-        p=0;n=0;
-        for (int i=0;i<nums.length;i++){
-            if (i%2==0)nums[i]=positive[p++];
-            else nums[i]=negative[n++];
-        }
-        return nums;
+        return ans;
     }
 }
