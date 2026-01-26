@@ -9,12 +9,8 @@ class Solution {
                 if (diff!=0&&diff<min){
                 ans.clear();
                 min =diff;
-                List<Integer> element = new ArrayList<>();
-                element.add(arr[i-1]);
-                element.add(arr[i]);
-                ans.add(element);
             }
-            else if (diff==min){
+            if (diff==min){
                 List<Integer> element = new ArrayList<>();
                 element.add(arr[i-1]);
                 element.add(arr[i]);
