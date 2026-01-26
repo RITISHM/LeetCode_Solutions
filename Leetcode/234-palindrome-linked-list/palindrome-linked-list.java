@@ -13,26 +13,27 @@ class Solution {
         ListNode prev=null;
         ListNode curr=head;
         while (curr!=null){
-            ListNode nxt=curr.next;
+            ListNode n=curr.next;
             curr.next=prev;
             prev=curr;
-            curr=nxt;
+            curr=n;
         }
         return prev;
     }
     public boolean isPalindrome(ListNode head) {
-        if (head.next==null)return true;
-        ListNode slow=head,fast=head;
-        while(fast.next!=null&&fast.next.next!=null){
+        if (head==null||head.next==null)return true ;
+        ListNode slow=head;
+        ListNode fast=head;
+
+        while (fast!=null&&fast.next!=null){
             fast=fast.next.next;
             slow=slow.next;
         }
-        fast=reverseFrom(slow.next);
-        slow=head;
-        while (fast!=null){
-            if (slow.val!=fast.val)return false;
-            fast=fast.next;
+        slow=reverseFrom(slow);
+        while (slow!=null){
+            if (slow.val!=head.val)return false ;
             slow=slow.next;
+            head=head.next;
         }
         return true;
     }
