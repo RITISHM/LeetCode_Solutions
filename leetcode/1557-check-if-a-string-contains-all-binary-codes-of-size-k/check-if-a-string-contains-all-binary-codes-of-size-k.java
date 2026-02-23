@@ -9,6 +9,7 @@ class Solution {
             String str=s.substring(sindex++,i);
             if (set.contains(str))continue;
             set.add(str);
+            if (set.size()==n)return true;
        } 
        
             if (set.size()==n)return true;
