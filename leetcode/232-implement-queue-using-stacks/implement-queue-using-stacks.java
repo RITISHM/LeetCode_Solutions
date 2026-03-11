@@ -13,11 +13,11 @@ class MyQueue {
       if (st1.isEmpty())st1.push(x);
 
       else {
-        while (st1.size()!=0){
+        while (!st1.isEmpty()){
             st2.push(st1.pop());
         }
         st1.push(x);
-        while (st2.size()!=0){
+        while (!st2.isEmpty()){
             st1.push(st2.pop());
         }
       }
