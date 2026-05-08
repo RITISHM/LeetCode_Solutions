@@ -14,19 +14,13 @@
  * }
  */
 class Solution {
-    public static void preorder(TreeNode root, List<Integer> res){
-        if(root==null) {
-        res.add(null);
-        return ;
-        }
-        res.add(root.val);
-        preorder(root.left,res);
-        preorder(root.right,res);
-    }
     public boolean isSameTree(TreeNode p, TreeNode q) {
-        List<Integer> list1=new LinkedList<>(), list2= new LinkedList<>();
+        if(p==null&q==null)return true;
 
-        preorder(p,list1);preorder(q,list2);
-        return list1.equals(list2);
+        if (p==null||q==null)return false;
+
+        if (q.val!=p.val) return false;
+
+        return isSameTree(p.left,q.left)&&isSameTree(p.right,q.right);
     }
 }
