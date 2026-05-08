@@ -21,7 +21,7 @@ class Solution {
         list.add(root.val);
     }
     public List<Integer> postorderTraversal(TreeNode root) {
-        List <Integer> list= new ArrayList<>();
+        List <Integer> list= new LinkedList<>();
         transversal(root,list);
         return list;
     }
