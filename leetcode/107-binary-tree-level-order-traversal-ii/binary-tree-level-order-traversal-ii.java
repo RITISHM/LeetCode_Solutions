@@ -14,20 +14,7 @@
  * }
  */
 class Solution {
-    public static void bfs(Queue <TreeNode> q, List<List<Integer>> res){
-        int size =q.size();
-        if (size==0)return ;
-
-        List<Integer> list=new LinkedList<>();
-        for (int i=0 ; i<size ; i++){
-            TreeNode curr= q.poll();
-            list.add(curr.val);
-            if (curr.left!=null) q.offer(curr.left);
-            if (curr.right!=null) q.offer(curr.right);
-        }
-        bfs(q,res);
-        res.add(list);
-    }
+    
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
 
        List<List<Integer>> res= new LinkedList<>();
@@ -35,7 +22,17 @@ class Solution {
        
        Queue <TreeNode> q =new LinkedList <>();
        q.offer(root);
-        bfs(q,res);
-        return res;
+       while(!q.isEmpty()){
+        int size =q.size();
+        List<Integer> list=new LinkedList<>();
+        for (int i=0 ; i<size ; i++){
+            TreeNode curr= q.poll();
+            list.add(curr.val);
+            if (curr.left!=null) q.offer(curr.left);
+            if (curr.right!=null) q.offer(curr.right);
+        }
+        res.add(list);
+       }
+        return res.reversed();
     }
 }
