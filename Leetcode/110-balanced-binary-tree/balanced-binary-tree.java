@@ -14,22 +14,16 @@
  * }
  */
 class Solution {
-    int[] checkbalance (TreeNode root){
-        int []ans =new int [2];
-        if (root==null)return ans;
-        int [] right =checkbalance(root.right);
-        int []left= checkbalance(root.left);
-        if (left[0]==-1||right[0]==-1){ans[0]=-1; return ans;}
-        if (Math.abs(left[1]-right[1])>1){
-            ans [0]=-1;
-            return ans;
-        }
-        ans [1]=1+Math.max(left[1],right[1]);
-        return ans ; 
-
+    int checkbalance (TreeNode root){
+       if (root==null)return 0;
+       int left= checkbalance (root.left);
+       if (left==-1)return -1;
+       int right=checkbalance (root.right);
+       if (right==-1)return -1;
+       if (Math.abs(left-right)>1)return -1;
+       return Math.max(left,right)+1;
     }
     public boolean isBalanced(TreeNode root) {
-        int []ans= checkbalance (root);
-        return ans[0]==0?true:false;
+        return checkbalance (root)!=-1?true:false;
     }
 }
