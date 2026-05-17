@@ -25,10 +25,7 @@ class Solution {
                 }
 
             }
-            else if ((prev==null||curr.val!=prev.val)&&(next==null||curr.val!=next.val)){
-                temp.next=curr;
-                temp=temp.next;
-            }
+           
 
             prev=curr;
             curr=curr.next;
