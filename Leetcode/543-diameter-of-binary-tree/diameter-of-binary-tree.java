@@ -24,7 +24,9 @@ class Solution {
     }
     public int diameterOfBinaryTree(TreeNode root) {
         if (root==null)return 0;
-        maxDepth(root);
+        int ans =maxDepth(root.left)+maxDepth(root.right);
+        if(diameter<ans)return ans  ;
+       
         return diameter ;
     }
 }
