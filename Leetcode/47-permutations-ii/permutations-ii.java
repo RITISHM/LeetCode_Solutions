@@ -3,9 +3,7 @@ class Solution {
 
     public static void solve(HashSet<List<Integer>> ans,int []nums,int index){
         if (index==nums.length-1){
-         List<Integer> temp=new ArrayList<>();
-         for (int element:nums)temp.add(element);
-         ans.add(new ArrayList<>(temp));
+         ans.add(Arrays.stream(nums).boxed().collect(Collectors.toList()));
          return;
         }
         for (int i=index;i<nums.length;i++){
