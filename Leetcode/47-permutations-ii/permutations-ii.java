@@ -25,9 +25,7 @@ class Solution {
     public List<List<Integer>> permuteUnique(int[] nums) {
         HashSet<List<Integer>> ans = new HashSet<>();
         solve(ans,nums,0);
-        List<List<Integer>> res=new ArrayList<>();
-        for (List<Integer> i : ans)res.add(i);
-        return res;
+        return new ArrayList<List<Integer>>(ans);
     }
 
 }
