@@ -15,6 +15,6 @@ class Solution {
         TreeNode max=(p.val>q.val)?p:q;
         if (root.val>=min.val&&root.val<=max.val)return root;
         
-        return  root.val>min.val?lowestCommonAncestor(root.left,min,max):lowestCommonAncestor(root.right,min,max);
+        return  root.val>max.val?lowestCommonAncestor(root.left,min,max):lowestCommonAncestor(root.right,min,max);
     }
 }
