@@ -14,8 +14,7 @@ class Solution {
         TreeNode min=(p.val<q.val)?p:q;
         TreeNode max=(p.val>q.val)?p:q;
         if (root.val>=min.val&&root.val<=max.val)return root;
-        TreeNode ans=lowestCommonAncestor(root.left,min,max);
-        if (ans!=null)return ans;
-        return lowestCommonAncestor(root.right,min,max);
+        
+        return  root.val>min.val?lowestCommonAncestor(root.left,min,max):lowestCommonAncestor(root.right,min,max);
     }
 }
