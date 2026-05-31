@@ -39,11 +39,11 @@ class Solution {
             root.right=root.right.left;
             return ;
         }
-        helper(root.left,key);
-        helper(root.right,key);
+        if (root.val>key)helper(root.left,key);
+        else helper(root.right,key);
     }
     public TreeNode deleteNode(TreeNode root, int key) {
-        TreeNode dummy=new TreeNode(-1);
+        TreeNode dummy=new TreeNode(Integer.MAX_VALUE);
         dummy.left=root;
         helper(dummy,key);
         return dummy.left;
