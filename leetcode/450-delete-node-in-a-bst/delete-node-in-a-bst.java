@@ -14,38 +14,29 @@
  * }
  */
 class Solution {
-    void fixer(TreeNode root){
-        TreeNode right=root.right;
-        TreeNode left=root.left;
-        if (root.left==null){
-            root.left=right;
-            return ;
-        }
-        while(left.right!=null){
-            left=left.right;
-        }
-        left.right =right;
-
-    }
-    void helper (TreeNode root,int key){
-        if (root==null)return;
-        if (root.left!=null&&root.left.val==key){
-            fixer(root.left);
-            root.left=root.left.left;
-            return ;
-        }
-        if (root.right!=null&&root.right.val==key){
-            fixer(root.right);
-            root.right=root.right.left;
-            return ;
-        }
-        if (root.val>key)helper(root.left,key);
-        else helper(root.right,key);
-    }
     public TreeNode deleteNode(TreeNode root, int key) {
-        TreeNode dummy=new TreeNode(Integer.MAX_VALUE);
-        dummy.left=root;
-        helper(dummy,key);
-        return dummy.left;
+        if (root==null)return root;
+        if (root.val>key){
+            root.left=deleteNode(root.left,key);
+            
+        } 
+        else if (root.val<key){
+            root.right=deleteNode(root.right,key);
+        }
+
+        else{
+            if (root.right==null)return root.left;
+            if (root.left==null)return root.right;
+
+
+            TreeNode right=root.right;
+            TreeNode left =root.left;
+
+            TreeNode temp=left;
+            while (temp.right!=null)temp=temp.right;
+            temp.right=right;
+            return left;
+        }
+        return root;
     }
 }
