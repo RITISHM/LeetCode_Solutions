@@ -27,12 +27,14 @@ class Solution {
             map.put(curr, newNode);
             curr = curr.next;
         }
-
-        for(Node i : map.keySet()){
-            newCurr = map.get(i);
+        
+        curr = head;
+        while (curr != null){
+            newCurr = map.get(curr);
             if (newCurr!=null)
-            if (i.random == null) newCurr.random = null;
-            else newCurr.random = map.get(i.random);
+            if (curr.random == null) newCurr.random = null;
+            else newCurr.random = map.get(curr.random);
+            curr = curr.next;
         }
         
         return newHead.next;
